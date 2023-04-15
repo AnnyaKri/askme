@@ -16,6 +16,12 @@
 
 <% @questions.each do |question| %>
   <div class="container">
-    <%= render question %>
+    <% if question.hidden? %>
+      <div class="question-hidden">
+        <%= render question %>
+      </div>
+    <% else %>
+      <%= render question %>
+    <% end %>
   </div>
 <% end %>
