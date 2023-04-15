@@ -4,3 +4,13 @@
   justify-content: space-between;
   padding-top: 10px;
 }
+
+.question-hidden {
+  opacity: 0.50;
+}
+
+.question-dop {
+  float: left;
+  font-size: 14px;
+  padding: 8px 13px 7px;
+}
