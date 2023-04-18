@@ -13,3 +13,7 @@
 .button-create {
   float: left;
 }
+
+.button-yellow {
+  background-color: #ffba08;
+}
