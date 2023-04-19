@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.create(question_params)
-    redirect_to question_path(question), notice: "Новый вопрос создан!"
+    redirect_to questions_path(question), notice: "Новый вопрос создан!"
   end
 
   def update
