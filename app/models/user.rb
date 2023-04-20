@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
+  has_many :questions, dependent: :delete_all
+
   def downcase_nickname
     nickname.downcase!
   end
