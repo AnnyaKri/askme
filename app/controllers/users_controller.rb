@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @questions = @user.questions
     @question = Question.new(user: @user)
   end
