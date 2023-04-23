@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   end
 
   def hide
-    @question.toggle(:hidden).save
+    @question.update(hidden: true)
     redirect_to questions_path, notice: "Скрыли вопрос!"
   end
 
