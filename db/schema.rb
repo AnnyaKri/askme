@@ -10,21 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_04_23_163504) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_04_20_074727) do
->>>>>>> dev
+
   create_table "questions", force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.boolean "hidden", default: false, null: false
-=======
-    t.boolean "hidden", default: false
->>>>>>> dev
     t.text "answer"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
