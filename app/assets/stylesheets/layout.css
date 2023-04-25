@@ -3,13 +3,32 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .wrapper {
   max-width: 800px;
   margin: 40px;
   width: 100%;
 }
+
 .container {
   background: #fff;
   padding: 20px;
   overflow: auto;
+}
+
+.container, .navbar {
+  padding: 20px;
+}
+
+.navbar {
+  align-items: center;
+  background-color: #370617;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
 }
