@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="title">Вход</h2>
-  <p class="mt">ВВедите свои email и пароль для входа на сайт</p>
+  <p class="mt">Ведите свои email и пароль для входа на сайт</p>
 
   <div class="mt">
     <%= form_with scope: :session, url: session_path, data: {turbo:false} do |form| %>
@@ -10,9 +10,7 @@
       <p class="mt"><%= form.label :password %></p>
       <p><%= form.password_field :password, class: 'form-text-field' %></p>
 
-
       <p class="mt-lg"><%= form.submit "Войти", class: "button button-main" %></p>
     <% end %>
   </div>
-
 </div>
