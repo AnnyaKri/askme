@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   has_secure_password
-
   before_save :downcase_nickname
+  CURRENT_NICKNAME = /\A\w+\z/
+  CURRENT_EMAIL = /\A\w+@\w+\.[a-z]+\z/
 
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 40 }
-  validates :nickname, format: { with: /\A[\w]+\z/ }
-  validates :email, presence: true, uniqueness: true, length: { maximum: 100 }
-  validates :email, format: { with: /\A[\w]+@[\w]+\.[a-z]+\z/ }
+  validates :nickname, format: { with: CURRENT_NICKNAME}
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: CURRENT_EMAIL}
 
   has_many :questions, dependent: :destroy
 
