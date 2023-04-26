@@ -7,21 +7,29 @@ class QuestionsController < ApplicationController
 
     @question = Question.create(question_params)
 
-    redirect_to user_path(@question.user), notice: "Новый вопрос создан!"
+    if @question.save
+      redirect_to user_path(@question.user), notice: "Новый вопрос создан!"
+    else
+      @user = @question.user
+      flash.now[:alert] = "Нужно задать вопрос!"
+      render :new
+    end
   end
 
   def update
     question_params = params.require(:question).permit(:body, :answer)
 
-    @question.update(question_params)
-    redirect_to user_path(@question.user), notice: "Сохранили вопрос!"
+    if @question.update(question_params)
+      redirect_to user_path(@question.user), notice: "Сохранили вопрос!"
+    else
+      flash.now[:alert] = "Ошибка при редактировании вопроса, нужно записать заново"
+      render :edit
+    end
   end
 
   def hide
-
     @question.update(hidden: true)
     redirect_to questions_path, notice: "Скрыли вопрос!"
-
   end
 
   def destroy
