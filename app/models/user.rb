@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   before_save :downcase_nickname
-  CURRENT_NICKNAME = /\A\w+\z/
-  CURRENT_EMAIL = /\A\w+@\w+\.[a-z]+\z/
+  CURRENT_NICKNAME = /\A\w+\z/.freeze
+  CURRENT_EMAIL = /\A\w+@\w+\.[a-z]+\z/.freeze
 
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 40 }
