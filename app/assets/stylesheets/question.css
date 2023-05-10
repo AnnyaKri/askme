@@ -5,6 +5,10 @@
   padding-top: 10px;
 }
 
+.word-wrap {
+  white-space: pre-line;
+}
+
 .question-hidden {
   opacity: 0.50;
 }
