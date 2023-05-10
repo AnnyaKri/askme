@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  FORMAT_NICKNAME = /\A\w+\z/.freeze
+  NICKNAME_FORMAT = /\A\w+\z/.freeze
 
   has_secure_password
   has_many :questions, dependent: :destroy
@@ -10,12 +10,12 @@ class User < ApplicationRecord
   validates :nickname, presence: true,
             uniqueness: true,
             length: { maximum: 40 },
-            format: { with: FORMAT_NICKNAME }
+            format: { with: NICKNAME_FORMAT }
   validates :email, presence: true,
             uniqueness: true,
             email: true
 
   def downcase_nickname
-    nickname.downcase!
+    nickname&.downcase!
   end
 end
