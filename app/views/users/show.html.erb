@@ -27,14 +27,20 @@
   </h2>
 </div>
 
-<% @questions.each do |question| %>
-  <div class="mt-sm container">
-    <% if question.hidden? %>
-      <div class="question-hidden">
-        <%= render question %>
+<% if @questions.any? %>
+  <div class="container">
+    <% @questions.each do |question| %>
+      <div class="mt-sm container">
+        <% if question.hidden? %>
+          <div class="question-hidden">
+            <%= render question %>
+          </div>
+        <% else %>
+          <%= render question %>
+        <% end %>
       </div>
-    <% else %>
-      <%= render question %>
     <% end %>
-  </div>
+<% else %>
+  <%= render partial: 'empty_state', locals: { user: @user } %>
 <% end %>
+</div>

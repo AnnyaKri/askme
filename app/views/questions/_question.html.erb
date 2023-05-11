@@ -8,7 +8,7 @@
   </div>
 <% end %>
 
-<div class="text-sm question-footer">
+<div class="text-sm question-footer ">
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
   </div>
@@ -24,10 +24,10 @@
                     form: { data: { turbo_confirm: "Точно удалить вопрос?" } }, class: "mr-sm" %>
 
       <% unless question.hidden? %>
-        <%= button_to fa_icon("eye"),
-                      hide_question_path(question),
-                      method: :put, title: "Скрыть вопрос",
-                      form: { data: { turbo_confirm: "Точно скрыть вопрос?" } } %>
+      <%= button_to fa_icon("eye"),
+                    hide_question_path(question),
+                    method: :put, title: "Скрыть вопрос",
+                    form: { data: { turbo_confirm: "Точно скрыть вопрос?" } } %>
       <% end %>
     </div>
   <% end %>
