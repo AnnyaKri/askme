@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :user_id)
 
     @question = Question.create(question_params)
+    @question.author = current_user
 
     if @question.save
       redirect_to user_path(@question.user), notice: "Новый вопрос создан!"
@@ -34,7 +35,6 @@ class QuestionsController < ApplicationController
 
   def destroy
     @user = @question.user
-
     @question.destroy
     redirect_to user_path(@user), notice: "Удалили вопрос!"
   end
