@@ -41,4 +41,3 @@ doc/app
 *~
 .DS_Store
 result.txt
-config/database.yml
