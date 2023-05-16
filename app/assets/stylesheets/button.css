@@ -6,10 +6,13 @@
   font-size: 14px;
   padding: 8px 13px 7px;
   text-decoration: none;
+  -webkit-appearance: none;
 }
+
 .button-main {
   background-color: #9D0208;
 }
+
 .button-create {
   float: left;
 }
