@@ -1,7 +1,11 @@
 <% unless current_user == nil %>
   <div class="mb-sm">
-    <p class="mb">Автор вопроса
-      <%= link_to display_nickname(question.author), user_path(question.author) %></p>
+    <% if question.author.present? %>
+      <p class="mb">Автор вопроса
+        <%= link_to display_nickname(question.author), user_path(question.author) %></p>
+    <% else %>
+      <p class="mb">Автор вопроса неизвестен</p>
+    <% end %>
   </div>
 <% end %>
 <div class="mb-sm word-wrap">
