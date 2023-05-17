@@ -3,7 +3,7 @@
 
   <% if current_user == @user %>
     <p class="mt mb-lg">
-      <%= link_to fa_icon('pencil'), edit_user_path(@user) %>
+      <%= link_to fa_icon("pencil"), edit_user_path(@user) %>
     </p>
   <% end %>
   <p class="text-bold mt mb-lg"><%= display_nickname(@user) %></p>
@@ -18,7 +18,7 @@
 
 <div class="container">
   <p class="mt">
-    <%= render 'questions/form', question: @question %>
+    <%= render "questions/form", question: @question %>
   </p>
 </div>
 
@@ -42,6 +42,6 @@
     </div>
   <% end %>
 <% else %>
-  <%= render partial: 'empty_state', locals: { user: @user } %>
+  <%= render partial: "empty_state", locals: { user: @user } %>
 <% end %>
 </div>
