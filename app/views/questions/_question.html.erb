@@ -1,44 +1,44 @@
-<% unless current_user == nil %>
-  <div class="mb-sm">
+<div class="mb-sm">
+
+  <p class="mb">Автор вопроса
     <% if question.author.present? %>
-      <p class="mb">Автор вопроса
-        <%= link_to display_nickname(question.author), user_path(question.author) %></p>
+      <%= link_to current_author(question), user_path(question.author) %>
     <% else %>
-      <p class="mb">Автор вопроса неизвестен</p>
+      неизвестен</p>
     <% end %>
-  </div>
-<% end %>
-<div class="mb-sm word-wrap">
-  <%= sanitize question.body %>
-</div>
 
-<% if question.answer.present? %>
-  <div class="mb-sm text-dark-red word-wrap">
-    <%= sanitize question.answer %>
-  </div>
-<% end %>
+    <div class="mb-sm word-wrap">
+      <%= sanitize question.body %>
+    </div>
 
-<div class="text-sm question-footer ">
-  <div class="text-grey">
-    <%= l(question.created_at, format: :short) %>
-  </div>
+    <% if question.answer.present? %>
+      <div class="mb-sm text-dark-red word-wrap">
+        <%= sanitize question.answer %>
+      </div>
+    <% end %>
 
-  <% if current_user == question.user %>
-    <div>
-      <% edit_icon = (question.answer.present? ? "pencil" : "reply") %>
-      <%= link_to fa_icon(edit_icon),
-                  edit_question_path(question), title: "Изменить", class: "mr-sm" %>
+    <div class="text-sm question-footer ">
+      <div class="text-grey">
+        <%= l(question.created_at, format: :short) %>
+      </div>
 
-      <%= button_to fa_icon("trash-o"),
-                    question_path(question), method: :delete, title: "Удалить вопрос",
-                    form: { data: { turbo_confirm: "Точно удалить вопрос?" } }, class: "mr-sm" %>
+      <% if current_user == question.user %>
+        <div>
+          <% edit_icon = (question.answer.present? ? "pencil" : "reply") %>
+          <%= link_to fa_icon(edit_icon),
+                      edit_question_path(question), title: "Изменить", class: "mr-sm" %>
 
-      <% unless question.hidden? %>
-        <%= button_to fa_icon("eye"),
-                      hide_question_path(question),
-                      method: :put, title: "Скрыть вопрос",
-                      form: { data: { turbo_confirm: "Точно скрыть вопрос?" } } %>
+          <%= button_to fa_icon("trash-o"),
+                        question_path(question), method: :delete, title: "Удалить вопрос",
+                        form: { data: { turbo_confirm: "Точно удалить вопрос?" } }, class: "mr-sm" %>
+
+          <% unless question.hidden? %>
+            <%= button_to fa_icon("eye"),
+                          hide_question_path(question),
+                          method: :put, title: "Скрыть вопрос",
+                          form: { data: { turbo_confirm: "Точно скрыть вопрос?" } } %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+    </div>
