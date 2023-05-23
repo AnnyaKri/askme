@@ -1,6 +1,6 @@
 <%= form_with model: @question, data: { turbo: false } do |form| %>
   <%= form.hidden_field :user_id %>
-  <% unless current_user == nil %>
+
     <p><%= form.label :body, "Текст вопроса" %></p>
     <p><%= form.text_area :body, rows: 5, class: "form-text-area" %></p>
 
@@ -10,5 +10,4 @@
     <% end %>
 
     <p class="mt"><%= form.submit "Создать", class: "button button-main button-create" %></p>
-  <% end %>
 <% end %>
