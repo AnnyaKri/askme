@@ -11,6 +11,9 @@
 |*
 |*= require question
 |*= require message
+|*= require utils
+
+|*= require users
 |*= require user
 
  */

@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   private
 
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: "retro")
   def downcase_nickname
     nickname&.downcase!
   end
