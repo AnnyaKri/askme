@@ -36,9 +36,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @questions = @user.questions.order(created_at: :desc)
-    @questions = @user.questions
     @question = Question.new(user: @user)
   end
 
@@ -49,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by!(nickname: params[:nickname])
   end
 
   def user_params
