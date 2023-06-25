@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+  include Gravtastic
+
   NICKNAME_FORMAT = /\A\w+\z/.freeze
   COLOR_FORMAT = /\A#\h{3}{1,2}\z/.freeze
   DEFAULT_NAVBAR_COLOR = "#370617".freeze
-  has_secure_password
+
   has_many :questions, dependent: :destroy
 
   before_validation :downcase_nickname
@@ -17,10 +19,12 @@ class User < ApplicationRecord
             email: true
   validates :navbar_color, format: { with: COLOR_FORMAT }, presence: true
 
+  gravtastic(secure: true, filetype: :png, size: 100, default: "retro")
+
+  has_secure_password
+
   private
 
-  include Gravtastic
-  gravtastic(secure: true, filetype: :png, size: 100, default: "retro")
   def downcase_nickname
     nickname&.downcase!
   end

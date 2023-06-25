@@ -2,7 +2,7 @@
 
   <p class="mb">Автор вопроса
     <% if question.author.present? %>
-      <%= link_to current_author(question), user_path(question.author) %>
+      <%= link_to current_author(question), user_path(question.author.nickname) %>
     <% else %>
       неизвестен</p>
     <% end %>

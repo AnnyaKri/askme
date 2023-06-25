@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def show
     @questions = @user.questions.order(created_at: :desc)
     @question = Question.new(user: @user)
+    @users = User.order(created_at: :desc).first(10)
   end
 
   private
