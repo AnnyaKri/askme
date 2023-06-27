@@ -8,12 +8,12 @@
     <% end %>
 
     <div class="mb-sm word-wrap">
-      <%= sanitize question.body %>
+      <%= sanitize text_with_hashtags(question.body) %>
     </div>
 
     <% if question.answer.present? %>
       <div class="mb-sm text-dark-red word-wrap">
-        <%= sanitize question.answer %>
+        <%= sanitize text_with_hashtags(question.body) %>
       </div>
     <% end %>
 

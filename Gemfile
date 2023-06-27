@@ -12,6 +12,7 @@ gem "jbuilder"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "sprockets-rails"
 gem "stimulus-rails"
+gem 'where_exists'
 gem "turbo-rails"
 gem "puma", "~> 5.0"
 

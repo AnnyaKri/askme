@@ -9,17 +9,28 @@
     <% end %>
   </div>
 </div>
-
 <div class="container mt-sm">
-  <h2 class="title-lg">
-    <%= inclination(@questions.count, "Последний", "Последние", "Последние") %>
-    <%= @questions.count %>
-    <%= inclination(@questions.count, "вопрос", "вопроса", "вопросов") %>
-  </h2>
-</div>
 
-<% @questions.each do |question| %>
-  <div class="mt-sm container">
+  <% if @hashtags.present? %>
+    <h2 class="title-lg mb">
+      Популярные хештеги:
+    </h2>
+    <% @hashtags.each do |hashtag| %>
+      <%= render partial: 'hashtags/hashtag', locals: { hashtag: hashtag } %>
+    <% end %>
+    </div>
+  <% end %>
+
+  <div class="container mt-sm">
+    <h2 class="title-lg">
+      <%= inclination(@questions.count, "Последний", "Последние", "Последние") %>
+      <%= @questions.count %>
+      <%= inclination(@questions.count, "вопрос", "вопроса", "вопросов") %>
+    </h2>
+  </div>
+
+  <% @questions.each do |question| %>
+    <div class="mt-sm container">
       <p class="mb text-sm text-grey">
       Вопрос <%= link_to "##{question.id}", question_path(question) %>
       для юзера <%= link_to display_nickname(question.user), user_path(question.user.nickname) %>
