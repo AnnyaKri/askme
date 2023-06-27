@@ -6,9 +6,9 @@ class Hashtag < ApplicationRecord
 
   before_validation :downcase_body
 
-  validates :body, presence: true
-
   scope :with_questions, -> { where_exists(:hashtag_questions) }
+
+  validates :body, presence: true
 
   private
 
