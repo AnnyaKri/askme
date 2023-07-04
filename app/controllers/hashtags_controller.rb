@@ -1,6 +1,10 @@
 class HashtagsController < ApplicationController
   def show
-    hashtag = Hashtag.with_questions.find_by(body: params[:body])
-    @questions = hashtag.questions.includes(:user)
+    begin
+      hashtag = Hashtag.with_questions.find_by!(body: params[:body].downcase)
+      @questions = hashtag.questions.includes(:user, :author)
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, alert: "Нет такого хэштега!"
+    end
   end
 end
