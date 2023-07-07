@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     @question = Question.create(question_params)
     @question.author = current_user
 
-    if QuestionSave.(question: @question, params: question_params)
+    if QuestionSave.call(question: @question, params: question_params)
       redirect_to user_path(@question.user.nickname), notice: "Новый вопрос создан!"
     else
       @user = @question.user
@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   def update
     question_params = params.require(:question).permit(:body, :answer)
 
-    if QuestionSave.(question: @question, params: question_params)
+    if QuestionSave.call(question: @question, params: question_params)
       redirect_to user_path(@question.user.nickname), notice: "Сохранили вопрос!"
     else
       flash.now[:alert] = "Ошибка при редактировании вопроса, нужно записать заново"
