@@ -13,7 +13,7 @@
 
     <% if question.answer.present? %>
       <div class="mb-sm text-dark-red word-wrap">
-        <%= sanitize text_with_hashtags(question.body) %>
+        <%= sanitize text_with_hashtags(question.answer) %>
       </div>
     <% end %>
 
